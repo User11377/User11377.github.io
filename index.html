@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meine GitHub-Seite</title>
-    <link rel="stylesheet" href="styles.css"> 
-    </head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 <body>
     <header>
-        <h1>Willkommen auf meiner persönlichen GitHub-Seite TEST</h1>
+        <h1>Willkommen auf meiner persönlichen GitHub-Seite</h1>
         <nav>
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Startseite</a></li>
@@ -18,11 +19,21 @@
         </nav>
     </header>
 
+    <section class="intro">
+        <div class="profile-picture">
+            <img src="images/myPicture.jpg" alt="Profilbild von Johannes Mayer">
+        </div>
+        <div class="intro-text">
+            <h2>Hallo, ich bin Johannes Mayer</h2>
+            <p>Ich bin ein leidenschaftlicher Programmierer und Schüler an der HTL Perg. Ich suche nach neuen Herausforderungen und Möglichkeiten, meine Fähigkeiten in der Softwareentwicklung und Künstlichen Intelligenz weiterzuentwickeln.</p>
+            <p>Kontaktieren Sie mich jederezeit unter johannesmayer4230@gmail.com oder rufen Sie mich an unter +43 664 99390801</p>
+        </div>
+    </section>
+
     <section>
         <h2>Auf dieser Seite finden Sie Informationen über mich, meine Projekte und meine Fähigkeiten</h2>
         <div class="code-snippet">
             <pre><code>
-// Beispielcode
 function helloWorld() {
     console.log("Hello, world!");
 }
@@ -31,8 +42,30 @@ helloWorld();
         </div>
     </section>
 
+    <section class="news">
+        <h2>Jobstatus</h2>
+        <p>
+            Zurzeit bin ich auf der Suche nach einem Praktikumsplatz. Wenn Sie Interesse an einem motivierten und engagierten Praktikanten haben, können Sie mich gerne kontaktieren.
+        </p>
+    </section>
+
+    <section class="current-projects">
+        <h2>Aktuelle Projekte</h2>
+        <h3>SmartScale</h3>
+        <p>
+            SmartScale ist eine intelligente Waage, die Rezepte über eine Webanwendung empfängt. <br>
+            <span id="moreText" style="display: none;">
+                Nutzer können Rezepte in eine Datenbank hinzufügen oder löschen, wobei jedes Rezept Details wie Schärfegrad, Zubereitungsdauer, Zutatenliste und ein Profilbild enthält.
+                Die Webanwendung ermöglicht außerdem das automatische Erstellen von Einkaufslisten basierend auf ausgewählten Rezepten.  
+                Zusätzlich verfügt die Waage über ein Touch-Display, das den Nutzer Schritt für Schritt durch das Rezept führt und die benötigten Mengen direkt abwiegt.  
+            </span>
+        </p>
+        <button class = "showMore-Button" id="readMoreBtn">Mehr zu SmartScale</button>
+    </section>
+    
     <footer>
-        <p>&copy; 2025 Johannes</p>
+        <p>&copy; 2025 Johannes Mayer</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -3,26 +3,32 @@ body {
     background-color: #2e3440; /* Dark background */
     color: #d8dee9; /* Light text color */
 }
+
 header, footer {
     background-color: #4c566a;
     padding: 1em;
     text-align: center;
 }
+
 nav ul {
     list-style-type: none;
     padding: 0;
 }
+
 nav ul li {
     display: inline;
     margin: 0 1em;
 }
+
 nav ul li a {
     color: #88c0d0;
     text-decoration: none;
 }
+
 section {
     padding: 2em;
 }
+
 .code-snippet {
     background-color: #3b4252;
     padding: 1em;
@@ -32,4 +38,46 @@ section {
 
 .code-snippet code {
     color: #a3be8c;
+}
+
+.box {
+    width: 300px;
+    height: 200px;
+    background-color: #c7d2ec;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;  /* Center content horizontally */
+    align-items: center;      /* Center content vertically */
+    color: #000;
+    margin: 20px;             /* Space between boxes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.box:hover {
+    transform: scale(1.05); /* Slightly enlarge the box on hover */
+}
+
+.box-content {
+    text-align: center;
+    font-size: 1.2em; /* Increase font size */
+    padding: 1em;
+}
+
+.content {
+    text-align: center;
+    background-color: #3b4252;
+    padding: 2em;
+    margin: 2em;
+    display: flex;            /* Enable flexbox */
+    justify-content: center;  /* Center boxes horizontally */
+    gap: 20px;                /* Space between boxes */
+}
+
+h2 {
+    color: #88c0d0;
+    text-align: center;
+    margin-bottom: 1em; /* Add space below the heading */
+    padding-bottom: 0.5em; /* Add padding below the heading */
+    border-bottom: 2px solid #88c0d0; /* Add a border below the heading */
 }

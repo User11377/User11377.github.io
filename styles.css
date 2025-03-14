@@ -33,3 +33,41 @@ section {
 .code-snippet code {
     color: #a3be8c;
 }
+.profile-picture {
+    margin-right: 2em;
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.intro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+    background-color: #4c566a;
+    margin-top: 2em;
+    padding: 1em;
+}
+.news {
+    background-color: #4c566a;
+    padding: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.news h2 {
+    margin-bottom: 1em;
+}
+
+.showMore-Button {
+    background-color: #4c566a;
+    color: #d8dee9;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1em;
+}

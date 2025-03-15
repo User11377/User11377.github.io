@@ -1,0 +1,119 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #2e3440;
+    color: #d8dee9;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #4c566a;
+    padding: 1em;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: #88c0d0;
+    text-decoration: none;
+}
+
+section {
+    padding: 2em;
+}
+
+.code-snippet {
+    background-color: #3b4252;
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.code-snippet code {
+    color: #a3be8c;
+}
+
+.profile-picture {
+    margin-right: 2em;
+    flex-shrink: 0;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+    background-color: #4c566a;
+    margin-top: 2em;
+    padding: 1em;
+}
+
+.news {
+    background-color: #4c566a;
+    padding: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.news h2 {
+    margin-bottom: 1em;
+}
+
+.showMore-Button {
+    background-color: #4c566a;
+    color: #d8dee9;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+
+
+/* Container für jedes Bild */
+.gallery-item {
+    width: 200px;  
+    text-align: center;  
+    margin-bottom: 2em;  
+}
+
+/* Stil für die Titel */
+.gallery-item h3 {
+    font-size: 1.25em;
+    color: #d8dee9;  
+    margin-bottom: 1em;  
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Container für die Bilder */
+.image-container {
+    width: 30%;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Stilsetzung für die Bilder */
+.project-image {
+    width: 100%; /* Die Breite bleibt 100% der Containerbreite */
+    height: 100%; /* Die Höhe des Bildes passt sich der Höhe des Containers an */
+    object-fit: contain; /* Hiermit wird das Bild skaliert, ohne abgeschnitten zu werden */
+    margin: 0 auto; /* Zentriert das Bild horizontal */
+}

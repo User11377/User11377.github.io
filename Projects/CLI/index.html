@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JM-CLI Projekt</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+    <h1>Willkommen beim JM-CLI Projekt</h1>
+    <nav>
+        <ul>
+            <li><a href="../../index.html"><i class="fas fa-home"></i> Startseite</a></li>
+            <li><a href="../projectsOverview.html"><i class="fas fa-project-diagram"></i> Projekte</a></li>
+            <li><a href="../../AboutMe/aboutMe.html"><i class="fas fa-user"></i> Über mich</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+    <h2>Projektbeschreibung</h2>
+    <p>Das JM-CLI-Projekt ist eine einfache Kommandozeilen-Anwendung, die mit der PyQt6-Bibliothek erstellt wurde. Diese Anwendung ermöglicht es dem Benutzer, grundlegende Befehle wie das Auflisten von Dateien, das Hinzufügen von Zahlen und das Wechseln von Verzeichnissen in einer grafischen Benutzeroberfläche auszuführen.</p>
+
+    <h2>Features:</h2>
+    <ul>
+        <li><strong>LA</strong> - Listet alle Dateien und Ordner im aktuellen Verzeichnis auf.</li>
+        <li><strong>ADD</strong> - Addiert zwei eingegebene Zahlen. Beispiel: <code>add 1 2</code></li>
+        <li><strong>HELP</strong> - Zeigt eine Liste aller verfügbaren Befehle an.</li>
+        <li><strong>CLEAR</strong> - Löscht alle Ausgaben im Terminal.</li>
+        <li><strong>CD</strong> - Wechselt das Verzeichnis. Beispiel: <code>cd /home/user</code></li>
+    </ul>
+
+    <h2>Code-Erklärung:</h2>
+    <p>Die Hauptklasse der Anwendung ist <code>TerminalWindow</code>, die von <code>QWidget</code> erbt. Diese Klasse implementiert die Benutzeroberfläche und das Verhalten der Anwendung:</p>
+    <ol>
+        <li><strong>GUI-Elemente:</strong>
+            <ul>
+                <li><code>QTextEdit</code>: Wird verwendet, um die Ausgaben der Anwendung anzuzeigen.</li>
+                <li><code>QLineEdit</code>: Ermöglicht es dem Benutzer, Befehle einzugeben.</li>
+                <li><code>QLabel</code>: Zeigt den aktuellen Pfad des Benutzers an.</li>
+            </ul>
+        </li>
+        <li><strong>Befehlshandler:</strong> Der Benutzer kann verschiedene Befehle wie <code>LA</code>, <code>ADD</code>, <code>HELP</code> und <code>CD</code> ausführen. Diese Befehle werden in der <code>run_command</code>-Methode behandelt.</li>
+        <li><strong>Fehlerbehandlung:</strong> Bei falscher Eingabe wird eine Fehlermeldung angezeigt, und die Anwendung fordert den Benutzer auf, den richtigen Befehl einzugeben.</li>
+    </ol>
+
+    <section class="image-gallery">
+        
+        <h3>starting Application</h3>
+        <div class="image-container">
+            <img src="images/image.png" alt="Projekt 1" class="project-image">
+        </div>
+
+        <h3>enter nothing</h3>
+        <div class="image-container">
+            <img src="images/image2.png" alt="Projekt 2" class="project-image">
+        </div>
+        <h3>enter help to see all functions</h3>
+        
+        <div class="image-container">
+            <img src="images/image3.png" alt="Projekt 3" class="project-image">
+        </div>
+
+        <h3>testing the add method</h3>
+        <div class="image-container">
+            <img src="images/image4.png" alt="Projekt 3" class="project-image">
+        </div>
+    </section>
+    
+
+    <h2>Code:</h2>
+    <div class="code-snippet">
+        <pre><code>
+import subprocess
+import sys
+from PyQt6.QtWidgets import QHBoxLayout, QApplication, QWidget, QVBoxLayout, QLineEdit, QTextEdit, QPushButton, QLabel
+import os
+
+class TerminalWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        #init Window
+        self.setWindowTitle("JM-CLI")
+        self.setGeometry(100,100,800,500)
+
+        #init style
+        self.set_qss_from_file('Projects/CLI/style.qss')
+
+        #init layout
+        layout = QVBoxLayout()
+
+        #init output_box
+        self.output_box = QTextEdit(self)
+        self.output_box.setReadOnly(True)
+        layout.addWidget(self.output_box)
+
+        self.output_box.setText("(c) JM_CLI since 2025")
+
+        input_layout = QHBoxLayout()
+
+        self.path_label = QLabel(self)
+        self.update_prompt()
+        input_layout.addWidget(self.path_label)
+
+        #init inputfield
+        self.command_input = QLineEdit(self)
+        self.command_input.setPlaceholderText("")
+        input_layout.addWidget(self.command_input)
+
+        self.command_input.setFocus()
+
+        layout.addLayout(input_layout)
+
+        self.setLayout(layout)
+
+        #set logic
+        self.command_input.returnPressed.connect(self.run_command)
+    
+        self.update_prompt()
+
+    def set_qss_from_file(self, path):
+        with open(path, 'r') as f:
+            qss = f.read()
+            self.setStyleSheet(qss)
+
+    def update_prompt(self):
+        current_path = os.getcwd()
+        self.path_label.setText(f"{current_path} > ")
+
+    def run_command(self):
+        self.output_box.append("\n")
+        input = self.command_input.text()
+        self.command_input.clear()
+        current_path = os.getcwd()
+        self.output_box.append(f"{current_path}> "+ input)
+
+        input = input.strip()
+        input = input.upper()
+
+        #split
+        parts = input.split()  # Teilt den String an Leerzeichen
+        try:
+            command = parts[0]  # Erstes Wort ist der Befehl
+        except IndexError:
+            self.output_box.append(f"{current_path}> too few arguments")
+            return
+        
+        args = parts[1:]    # Alles danach sind die Argumente
+
+        if command == "HELP":
+            help_text = "Here is a list of what you can do\n"
+            help_text += "1. LA - list all folders and datas of your current path\n"
+            help_text += "2. ADD - Add 2 numbers [add 1 1] = 2\n"
+            help_text += "3. HELP - Show this help message\n"
+            help_text += "4. CLEAR - clears all your Requests\n"
+            help_text += "5. CD - change directory -> cd [directory]"
+            self.output_box.append(help_text)
+        elif command == "LA":
+            self.list_all_files()
+
+        elif command == "CLEAR":
+            self.output_box.clear()
+            self.output_box.setText("(c) JM_CLI since 2025")
+        
+        elif command == "ADD":
+            if len(args) < 2:
+                self.output_box.append("ERROR! Usage: add num1 num2")
+            else:
+                try:
+                    num1 = float(args[0])
+                    num2 = float(args[1])
+                    result = num1 + num2
+                    self.output_box.append(f"Result: {result}")
+                except ValueError:
+                    self.output_box.append("Error: Please enter valid numbers!")
+        
+        #change directory
+        elif command == "CD":
+            if len(args) < 1:
+                self.output_box("Error! Usage: cd <path>")
+            else:
+                new_path = os.path.join(current_path, args[0])
+
+                if os.path.isdir(new_path):
+                    os.chdir(new_path)
+                    current_path = os.getcwd()
+                    self.path_label.clear()
+                    self.path_label.setText(current_path + "> ")
+                    self.output_box.append(f"Changed directory to: {current_path}")
+                else:
+                    self.output_box.append(f"Error: The directory '{new_path}' does not exist.")
+
+        else:
+            self.output_box.append("Wrong command, enter 'help' to get more information")
+
+    def list_all_files(self):
+        current_path = os.getcwd()
+        files = os.listdir(current_path)
+        self.output_box.append(f"Files in {current_path}")
+        for file in files:
+            self.output_box.append(file)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = TerminalWindow()
+    window.show()
+    sys.exit(app.exec())
+        </code></pre>
+    </div>
+
+
+
+</section>
+
+<section>
+    <h2>qss stylesheet:</h2>
+    <div class="code-snippet">
+        <pre><code>
+            QWidget {
+                background-color: #2B2B2B; 
+                color: white;
+                font-family: 'Courier New', monospace;
+            }
+            
+            /* Überschriften und Labels */
+            QLabel {
+                color: #00FF00; 
+                font-size: 16px;
+                font-weight: bold;
+                padding: 3px;
+                border-radius: 3px;
+            }
+            
+            /* Eingabefeld */
+            QLineEdit {
+                background-color: #2B2B2B; 
+                color: white;
+                font-size: 14px;
+                padding: 6px;
+                border: none;
+                border-radius: 5px;
+            }
+            
+            /* Fokus-Stil für QLineEdit */
+            QLineEdit:focus {
+                background-color: #2B2B2B; 
+            }
+            
+            /* Haupt-Textbereich */
+            QTextEdit {
+                background-color: #2B2B2B;
+                color: white;
+                font-size: 16px;
+                padding: 8px;
+                border: none;
+                border-radius: 5px;
+            }
+            
+            /* Read-Only QTextEdit */
+            QTextEdit[readOnly='true'] {
+                background-color: #2B2B2B;
+            }
+            
+            /* Hover-Effekt für QTextEdit */
+            QTextEdit:hover {
+                background-color: #2B2B2B;
+            }
+            
+            /* Vertikale Scrollbar */
+            QScrollBar:vertical {
+                border: none;
+                background: #2B2B2B;
+                width: 10px; 
+                margin: 2px;
+                border-radius: 5px;
+            }
+            
+            /* Scrollbar-Handle (beweglicher Teil) */
+            QScrollBar::handle:vertical {
+                background: #555;
+                min-height: 25px;
+                border-radius: 5px;
+            }
+            
+            QScrollBar::handle:vertical:hover {
+                background: #777;
+            }
+            
+            /* Keine Scrollbar-Pfeile */
+            QScrollBar::add-line:vertical, 
+            QScrollBar::sub-line:vertical {
+                background: none;
+                border: none;
+                height: 0px;
+            }
+            
+            /* Keine Füllbereiche über oder unter dem Handle */
+            QScrollBar::add-page:vertical, 
+            QScrollBar::sub-page:vertical {
+                background: none;
+            }
+            
+        </code></pre>
+    </div>  
+</section>
+
+<footer>
+</footer>
+
+</body>
+</html>

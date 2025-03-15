@@ -112,8 +112,8 @@ section {
 
 /* Stilsetzung für die Bilder */
 .project-image {
-    width: 100%; /* Die Breite bleibt 100% der Containerbreite */
-    height: 100%; /* Die Höhe des Bildes passt sich der Höhe des Containers an */
-    object-fit: contain; /* Hiermit wird das Bild skaliert, ohne abgeschnitten zu werden */
-    margin: 0 auto; /* Zentriert das Bild horizontal */
+    width: 100%;
+    height: 100%; 
+    object-fit: contain; 
+    margin: 0 auto; 
 }

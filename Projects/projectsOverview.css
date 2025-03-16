@@ -96,3 +96,50 @@ h2 {
     padding-bottom: 0.5em; /* Add padding below the heading */
     border-bottom: 2px solid #88c0d0; /* Add a border below the heading */
 }
+
+/* Media Query für mobile Geräte */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .content {
+        flex-direction: column; /* Boxen untereinander anordnen */
+        align-items: center; /* Zentrieren */
+        padding: 1em;
+        gap: 15px;
+    }
+
+    .box {
+        width: 70%; /* Box nimmt fast die ganze Breite ein */
+        max-width: 400px; /* Verhindert zu große Boxen auf Tablets */
+        height: auto; /* Höhe automatisch anpassen */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .box-content {
+        font-size: 1em; /* Kleinere Schriftgröße */
+    }
+
+    .code-snippet {
+        font-size: 0.9em;
+        overflow-x: auto;
+    }
+
+    section {
+        padding: 1.5em;
+    }
+
+    header, footer {
+        padding: 0.8em;
+    }
+}
+

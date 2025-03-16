@@ -117,3 +117,62 @@ section {
     object-fit: contain; 
     margin: 0 auto; 
 }
+/* Media Query für mobile Geräte */
+@media (max-width: 768px) {
+    /* Navigation untereinander anordnen */
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* Intro (Profilbild & Text untereinander anordnen) */
+    .intro {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5em;
+    }
+
+    .profile-picture {
+        margin-right: 0;
+        margin-bottom: 1em;
+    }
+
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Galerie-Elemente (Bilder breiter machen) */
+    .gallery-item {
+        width: 100%; /* Bild nimmt gesamte Breite ein */
+        text-align: center;
+    }
+
+    .image-container {
+        width: 90%; /* Bilder breiter auf mobilen Geräten */
+        height: auto;
+        max-height: 250px; /* Maximale Höhe begrenzen */
+        margin: 0 auto;
+    }
+
+    .project-image {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* Reduziertes Padding für besseren Platz */
+    section {
+        padding: 1.5em;
+    }
+
+    header, footer {
+        padding: 0.8em;
+    }
+}

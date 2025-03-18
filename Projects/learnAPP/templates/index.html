@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JFM Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            let flashcards = [];
+
+            // Lade die JSON-Datei mit den Karteikarten
+            async function loadFlashcards() {
+                try {
+                    const response = await fetch("../flashcards.json");
+                    flashcards = await response.json();
+                    renderCard();
+                } catch (error) {
+                    console.error("Fehler beim Laden der Karteikarten:", error);
+                }
+            }
+
+            let currentIndex = 0;
+            let showingFront = true;
+            const cardContainer = document.getElementById("cards-container");
+            const nextButton = document.getElementById("next-card");
+
+            function renderCard() {
+                if (flashcards.length > 0) {
+                    cardContainer.innerHTML = `<div class="card">${showingFront ? flashcards[currentIndex][0] : flashcards[currentIndex][2]}</div>`;
+                } else {
+                    cardContainer.innerHTML = "<div class='card'>Keine Daten geladen</div>";
+                }
+            }
+
+            cardContainer.addEventListener("click", function() {
+                showingFront = !showingFront;
+                renderCard();
+            });
+
+            nextButton.addEventListener("click", function() {
+                currentIndex = (currentIndex + 1) % flashcards.length;
+                showingFront = true;
+                renderCard();
+            });
+
+            await loadFlashcards();
+        });
+    </script>
+</head>
+<body>
+    <section class="header">
+        <div class="container">
+            <h1>JM Learning</h1>
+            <p>Deine persönliche Lernplattform</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="container">
+            <h3>Deine Karteikarten</h3>
+            <p>Klicke auf die Karteikarte, um die Rückseite zu sehen.</p>
+            
+            <div id="cards-container" class="cards-container"></div>
+            
+            <div class="controls">
+                <button id="next-card" class="button">Nächste Karte</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

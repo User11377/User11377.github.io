@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards-Projekt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Flashcards mit Ollama</h1>
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Startseite</a></li>
+            <li><a href="../projectsOverview.html">Projekte</a></li>
+            <li><a href="../../AboutMe/aboutMe.html">Über mich</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+    <h2>Teste meine Lern-App</h2>
+    <a href="templates/index.html" class="testen">testen</a>
+</section>
+
+<section>
+    <h2>Projektbeschreibung</h2>
+    <p>Dieses Projekt generiert automatisch Flashcards aus englisch-deutschen Wortlisten mit Hilfe des lokalen KI-Modells <strong>Mistral</strong> über Ollama.</p>
+
+    <h2>Features</h2>
+    <ul>
+        <li><strong>Automatische Umwandlung</strong> von Text in ein strukturiertes JSON-Format.</li>
+        <li><strong>Verwendung von Ollama</strong>, um den Text semantisch zu verstehen.</li>
+        <li><strong>Erstellung von Karteikarten</strong> mit englischen Begriffen, Beispielsätzen und deutschen Übersetzungen.</li>
+    </ul>
+</section>
+
+<section class="image-gallery">
+    <h3>Beispiel-Screenshots</h3>
+    <div class="image-container">
+        <img src="images/example1.png" alt="JSON-Ausgabe" class="project-image">
+    </div>
+    <div class="image-container">
+        <img src="images/example2.png" alt="Terminal-Output" class="project-image">
+    </div>
+</section>
+
+<section>
+    <h2>Code</h2>
+    <div class="code-snippet">
+        <pre><code>
+import subprocess
+import json
+
+def format_text_with_ollama(text):
+    prompt = f"""
+    Formatiere den Text als Python-Liste mit:
+    [["Englisches Wort", "Beispielsatz", "Deutsche Übersetzung"], ...].
+    
+    Text:
+    {text}
+    """
+    result = subprocess.run(
+        ["ollama", "run", "mistral", prompt], 
+        capture_output=True, text=True, encoding='utf-8'
+    )
+    return result.stdout.strip()
+        </code></pre>
+    </div>
+</section>
+
+<section>
+    <h2>JSON-Beispiel</h2>
+    <div class="code-snippet">
+        <pre><code>
+[
+    ["to have a drink", "Erin had a drink with me last week.", "etwas trinken"],
+    ["vegetarian dish", "I think I’ll order the vegetarian dish.", "vegetarisches Gericht"]
+]
+        </code></pre>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Flashcards-Projekt</p>
+</footer>
+
+</body>
+</html>

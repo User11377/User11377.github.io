@@ -1,0 +1,126 @@
+/* Allgemeine Stile für die Seite */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f5f9;  /* Heller Hintergrund für den allgemeinen Bereich */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.header {
+    background-color: #6a4c9c;  /* Lila Hintergrundfarbe */
+    padding: 30px 0;
+    text-align: center;
+    color: white;
+    border-bottom: 5px solid #4e3c70; /* Dunklere Linie am unteren Rand */
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+
+/* Container für den Hauptinhalt */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hauptinhalt Sektion */
+.main-content {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.main-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #6a4c9c; /* Lila für den Titel */
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Karteikarten Container */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+/* Stil für jede Karte */
+.card {
+    width: 260px;
+    padding: 20px;
+    background-color: #ffffff;  /* Weißer Hintergrund für die Karten */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #6a4c9c; /* Lila Rand für die Karte */
+}
+
+.card:hover {
+    /*transform: translateY(-10px);*/
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+/* Begriff der Karte */
+.card .term {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #6a4c9c; /* Lila für den Begriff */
+}
+
+/* Beispielsatz der Karte */
+.card .sentence {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Übersetzung der Karte */
+.card .translation {
+    font-size: 1.1rem;
+    color: #888;
+}
+
+/* Button für die Steuerung */
+.controls {
+    margin-top: 40px;
+}
+
+.button {
+    background-color: #6a4c9c; /* Lila Hintergrund */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #5b3f8a;  /* Dunkleres Lila für den Hover-Effekt */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}

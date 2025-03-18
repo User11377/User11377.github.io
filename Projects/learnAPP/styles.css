@@ -1,0 +1,146 @@
+body {
+    font-family: 'Courier New', Courier, monospace; /* Monospaced font */
+    background-color: #2e3440; /* Dark background */
+    color: #d8dee9; /* Light text color */
+}
+header, footer {
+    background-color: #4c566a;
+    padding: 1em;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+nav ul li a {
+    color: #88c0d0;
+    text-decoration: none;
+}
+section {
+    padding: 2em;
+}
+.code-snippet {
+    background-color: #3b4252;
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.code-snippet code {
+    color: #a3be8c;
+}
+.profile-picture {
+    margin-right: 2em;
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.intro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+    background-color: #4c566a;
+    margin-top: 2em;
+    padding: 1em;
+}
+.news {
+    background-color: #4c566a;
+    padding: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.news h2 {
+    margin-bottom: 1em;
+}
+
+.showMore-Button {
+    background-color: #4c566a;
+    color: #d8dee9;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+.testen {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testen:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.testen:active {
+    background-color: #003d82;
+    transform: scale(0.95);
+}
+
+
+/* Media Query für mobile Geräte */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .intro {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5em;
+    }
+
+    .profile-picture {
+        margin-right: 0;
+        margin-bottom: 1em;
+    }
+
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .code-snippet {
+        font-size: 0.9em;
+        overflow-x: auto;
+    }
+
+    .showMore-Button {
+        width: 100%;
+        text-align: center;
+    }
+
+    section {
+        padding: 1.5em;
+    }
+
+    header, footer {
+        padding: 0.8em;
+    }
+}
+

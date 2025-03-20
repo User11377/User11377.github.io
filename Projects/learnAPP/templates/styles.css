@@ -182,6 +182,33 @@ body {
     color: #333;
 }
 
+.progress-container {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.progress-boxes {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.progress-box {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border: 1px solid #999;
+}
+
+.progress-box.known {
+    background-color: green;
+}
+.progressCount{
+    font-size: 1.2em;
+    color: #389748;
+    font-weight: bold;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .controls {

@@ -6,48 +6,51 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f3f5f9;  /* Heller Hintergrund für den allgemeinen Bereich */
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9fafb;
     color: #333;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 /* Header Styles */
 .header {
-    background-color: #6a4c9c;  /* Lila Hintergrundfarbe */
-    padding: 30px 0;
+    background-color: #6c63ff;
+    color: #fff;
+    padding: 1.5em 0;
     text-align: center;
-    color: white;
-    border-bottom: 5px solid #4e3c70; /* Dunklere Linie am unteren Rand */
+    border-bottom: 5px solid #4c4ab8;
 }
 
 .header h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
+    margin: 0;
+    font-size: 2.8em;
+    font-weight: bold;
 }
 
 .header p {
-    font-size: 1.3rem;
+    margin: 0.5em 0 0;
+    font-size: 1.2em;
     font-weight: 300;
 }
 
 /* Container für den Hauptinhalt */
 .container {
-    width: 80%;
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 /* Hauptinhalt Sektion */
 .main-content {
-    padding: 60px 0;
+    padding: 2em;
     text-align: center;
 }
 
 .main-content h3 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #6a4c9c; /* Lila für den Titel */
+    color: #6c63ff;
 }
 
 .main-content p {
@@ -58,26 +61,30 @@ body {
 
 /* Karteikarten Container */
 .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding-bottom: 30px;
+    margin: 1em auto;
+    padding: 1em;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
 }
 
 /* Stil für jede Karte */
 .card {
-    width: 260px;
+    width: 100%;
     padding: 20px;
-    background-color: #ffffff;  /* Weißer Hintergrund für die Karten */
-    border-radius: 10px;
+    background-color: #f4f4f9;
+    border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid #6a4c9c; /* Lila Rand für die Karte */
+    border: 2px solid #6c63ff;
 }
 
 .card:hover {
-    /*transform: translateY(-10px);*/
+    transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
@@ -87,7 +94,7 @@ body {
     font-size: 1.6rem;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #6a4c9c; /* Lila für den Begriff */
+    color: #6c63ff;
 }
 
 /* Beispielsatz der Karte */
@@ -105,22 +112,84 @@ body {
 
 /* Button für die Steuerung */
 .controls {
-    margin-top: 40px;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
 }
 
 .button {
-    background-color: #6a4c9c; /* Lila Hintergrund */
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    padding: 0.8em 1.5em;
+    font-size: 1em;
+    color: #fff;
+    background-color: #6c63ff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
-    background-color: #5b3f8a;  /* Dunkleres Lila für den Hover-Effekt */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: #4c4ab8;
+    transform: translateY(-3px);
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.button.know {
+    background-color: #4caf50;
+}
+
+.button.know:hover {
+    background-color: #388e3c;
+}
+
+.button.next-card {
+    background-color: #ff7043;
+}
+
+.button.next-card:hover {
+    background-color: #e64a19;
+}
+
+.button.hint {
+    background-color: #ffca28;
+    color: #333;
+}
+
+.button.hint:hover {
+    background-color: #fbc02d;
+}
+
+/* Hinweisbox */
+.hint-container {
+    margin-top: 1em;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.hint-box {
+    background-color: #fff8e1;
+    padding: 1em;
+    border: 1px solid #ffd54f;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .cards-container {
+        font-size: 1.2em;
+    }
 }

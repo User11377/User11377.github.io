@@ -19,15 +19,19 @@
                     console.error("Fehler beim Laden der Karteikarten:", error);
                 }
             }
-
+            
+            // Initialisiere die Karteikarten
             let currentIndex = 0;
             let showingFront = true;
             const cardContainer = document.getElementById("cards-container");
             const nextButton = document.getElementById("next-card");
+            const hintButton = document.getElementById("hint-button");
+            const hintContainer = document.getElementById("hint");
 
             function renderCard() {
                 if (flashcards.length > 0) {
                     cardContainer.innerHTML = `<div class="card">${showingFront ? flashcards[currentIndex][0] : flashcards[currentIndex][2]}</div>`;
+                    hintContainer.innerHTML = ""; // Clear hint when rendering a new card
                 } else {
                     cardContainer.innerHTML = "<div class='card'>Keine Daten geladen</div>";
                 }
@@ -44,7 +48,39 @@
                 renderCard();
             });
 
+            hintButton.addEventListener("click", function() {
+                if (flashcards.length > 0) {
+                    hintContainer.innerHTML = `<div class="hint-box">${flashcards[currentIndex][1]}</div>`;
+                }
+            });
+
             await loadFlashcards();
+
+            // Buttons und Event-Listener für die Buttons und neue Array-Elemente
+            const knowButton = document.getElementById("know");
+
+            let knowingFlashcards = [];
+
+            knowButton.addEventListener("click", function() {
+                knowingFlashcards.push(flashcards[currentIndex]);
+                flashcards.splice(currentIndex, 1);
+                if (flashcards.length === 0) {
+                    cardContainer.innerHTML = "<div class='card'>Alle Karteikarten gelernt!</div>";
+                } else {
+                    currentIndex = currentIndex % flashcards.length;
+                    renderCard();
+                }
+            });
+            
+            const turnCardsButton = document.getElementById("turnCards");
+            turnCardsButton.addEventListener("click", function() {
+                for (let i = 0; i < flashcards.length; i++) {
+                    const temp = flashcards[i][0];
+                    flashcards[i][0] = flashcards[i][2];
+                    flashcards[i][2] = temp;
+                }
+                renderCard();
+            });
         });
     </script>
 </head>
@@ -62,9 +98,13 @@
             <p>Klicke auf die Karteikarte, um die Rückseite zu sehen.</p>
             
             <div id="cards-container" class="cards-container"></div>
+            <div id="hint" class="hint-container"></div>
             
             <div class="controls">
-                <button id="next-card" class="button">Nächste Karte</button>
+                <button id="know" class="button know">Weiß ich</button>
+                <button id="next-card" class="button next-card">Nächste Karte</button>
+                <button id="hint-button" class="button hint">Hinweis anzeigen</button>
+                <button id="turnCards" class="button">Karteikarten umdrehen</button>
             </div>
         </div>
     </section>

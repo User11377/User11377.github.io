@@ -8,65 +8,66 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Willkommen auf meiner persönlichen GitHub-Seite</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i> Startseite</a></li>
-                <li><a href="Projects/projectsOverview.html"><i class="fas fa-project-diagram"></i> Projekte</a></li>
-                <li><a href="AboutMe/aboutMe.html"><i class="fas fa-user"></i> Über mich</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <h1>Willkommen auf meiner persönlichen GitHub-Seite</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Startseite</a></li>
+                    <li><a href="Projects/projectsOverview.html"><i class="fas fa-project-diagram"></i> Projekte</a></li>
+                    <li><a href="AboutMe/aboutMe.html"><i class="fas fa-user"></i> Über mich</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="intro">
-        <div class="profile-picture">
-            <img src="images/profilePicture_croped.jpg" alt="Profilbild von Johannes Mayer">
-        </div>
-        <div class="intro-text">
-            <h2>Hallo, ich bin Johannes Mayer</h2>
-            <p>Ich bin ein leidenschaftlicher Programmierer und Schüler an der HTL Perg. Ich suche nach neuen Herausforderungen und Möglichkeiten, meine Fähigkeiten in der Softwareentwicklung und Künstlichen Intelligenz weiterzuentwickeln.</p>
-            <p>Kontaktieren Sie mich jederezeit unter johannesmayer4230@gmail.com oder rufen Sie mich an unter +43 664 99390801</p>
-        </div>
-    </section>
-
-    <section>
-        <h2>Auf dieser Seite finden Sie Informationen über mich, meine Projekte und meine Fähigkeiten</h2>
-        <div class="code-snippet">
-            <pre><code>
-function helloWorld() {
-    console.log("Hello, world!");
-}
-helloWorld();
-            </code></pre>
+        <div class="container intro-container">
+            <div class="profile-picture">
+                <img src="images/profilePicture_croped.jpg" alt="Profilbild von Johannes Mayer">
+            </div>
+            <div class="intro-text">
+                <h2>Hallo, ich bin Johannes Mayer</h2>
+                <p>Ich bin ein leidenschaftlicher Programmierer und Schüler an der HTL Perg. Ich suche nach neuen Herausforderungen und Möglichkeiten, meine Fähigkeiten in der Softwareentwicklung und Künstlichen Intelligenz weiterzuentwickeln.</p>
+                <p>Kontaktieren Sie mich jederzeit unter <a href="mailto:johannesmayer4230@gmail.com">johannesmayer4230@gmail.com</a> oder rufen Sie mich an unter <a href="tel:+4366499390801">+43 664 99390801</a>.</p>
+            </div>
         </div>
     </section>
 
     <section class="news">
-        <h2>Jobstatus</h2>
-        <p>
-            Stolzer Praktikan bei KEBA AG in Linz. <br>
-            KEBA ist ein international tätiges Unternehmen, das sich auf die Entwicklung und Produktion von Automatisierungslösungen spezialisiert hat. <br>
-            
-        </p>
+        <div class="container">
+            <h2>Jobstatus</h2>
+            <p>
+                Stolzer Praktikant bei KEBA AG in Linz. <br>
+                KEBA ist ein international tätiges Unternehmen, das sich auf die Entwicklung und Produktion von Automatisierungslösungen spezialisiert hat.
+            </p>
+        </div>
     </section>
 
     <section class="current-projects">
-        <h2>Aktuelle Projekte</h2>
-        <h3>SmartScale</h3>
-        <p>
-            SmartScale ist eine intelligente Waage, die Rezepte über eine Webanwendung empfängt. <br>
-            <span id="moreText" style="display: none;">
-                Nutzer können Rezepte in eine Datenbank hinzufügen oder löschen, wobei jedes Rezept Details wie Schärfegrad, Zubereitungsdauer, Zutatenliste und ein Profilbild enthält.
-                Die Webanwendung ermöglicht außerdem das automatische Erstellen von Einkaufslisten basierend auf ausgewählten Rezepten.  
-                Zusätzlich verfügt die Waage über ein Touch-Display, das den Nutzer Schritt für Schritt durch das Rezept führt und die benötigten Mengen direkt abwiegt.  
-            </span>
-        </p>
-        <button class = "showMore-Button" id="readMoreBtn">Mehr zu SmartScale</button>
+        <div class="container">
+            <h2>Aktuelle Projekte</h2>
+            <h3>SmartScale</h3>
+            <p>
+                SmartScale ist eine intelligente Waage, die Rezepte über eine Webanwendung empfängt. <br>
+                <span id="moreText" style="display: none;">
+                    Nutzer können Rezepte in eine Datenbank hinzufügen oder löschen, wobei jedes Rezept Details wie Schärfegrad, Zubereitungsdauer, Zutatenliste und ein Profilbild enthält.
+                    Die Webanwendung ermöglicht außerdem das automatische Erstellen von Einkaufslisten basierend auf ausgewählten Rezepten.  
+                    Zusätzlich verfügt die Waage über ein Touch-Display, das den Nutzer Schritt für Schritt durch das Rezept führt und die benötigten Mengen direkt abwiegt.
+                    Erste Prototypen wurden bereits erfolgreich getestet.
+                    Link: <a href="https://testing.dacho.me/"> zur Website von SmartScale</a> 
+                      
+                </span>
+                
+            </p>
+            <button class="showMore-Button" id="readMoreBtn">Mehr zu SmartScale</button>
+        </div>
     </section>
-    
-    <footer>
-        <p>&copy; 2025 Johannes Mayer</p>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Johannes Mayer</p>
+        </div>
     </footer>
     <script src="script.js"></script>
 </body>

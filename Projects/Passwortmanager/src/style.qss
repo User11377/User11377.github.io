@@ -1,0 +1,89 @@
+/* Allgemeines Fenster-Design */
+QMainWindow {
+    background-color: #121212; /* Dunkler Hintergrund */
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    color: #ffffff; /* Weißer Text */
+    border: none;
+}
+
+/* Labels */
+QLabel {
+    color: #ffffff; /* Weißer Text */
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Eingabefelder */
+QLineEdit {
+    border: 1px solid #3a3a3a; /* Dezente Umrandung */
+    border-radius: 6px;
+    padding: 8px;
+    background-color: #1e1e1e; /* Dunkler Hintergrund */
+    color: #ffffff; /* Weißer Text */
+}
+
+QLineEdit:focus {
+    border: 1px solid #0078d7; /* Blau bei Fokus */
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #0078d7; /* Blau */
+    color: #ffffff; /* Weißer Text */
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+QPushButton:hover {
+    background-color: #005a9e; /* Dunkleres Blau bei Hover */
+    transform: scale(1.05); /* Leichtes Vergrößern bei Hover */
+}
+
+QPushButton:pressed {
+    background-color: #003f73; /* Noch dunkleres Blau bei Klick */
+    transform: scale(0.95); /* Leichtes Verkleinern bei Klick */
+}
+
+/* Tabelle */
+QTableWidget {
+    border: 1px solid #3a3a3a; /* Dezente Umrandung */
+    background-color: #1e1e1e; /* Dunkler Hintergrund */
+    color: #ffffff; /* Weißer Text */
+}
+
+QHeaderView::section {
+    background-color: #0078d7; /* Blau */
+    color: #ffffff; /* Weißer Text */
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Scrollbars */
+QScrollBar:vertical, QScrollBar:horizontal {
+    background: #1e1e1e; /* Dunkler Hintergrund */
+    border: none;
+    width: 12px;
+    height: 12px;
+}
+
+QScrollBar::handle {
+    background: #3a3a3a; /* Dezente Scrollbar */
+    border-radius: 6px;
+}
+
+QScrollBar::handle:hover {
+    background: #0078d7; /* Blau bei Hover */
+}
+
+QScrollBar::add-line, QScrollBar::sub-line {
+    background: none;
+    border: none;
+}

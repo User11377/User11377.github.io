@@ -1,89 +1,203 @@
-/* Allgemeines Fenster-Design */
+/* === Globales Design === */
 QMainWindow {
-    background-color: #121212; /* Dunkler Hintergrund */
-    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #ffffff; /* Weißer Hintergrund */
+    font-family: "Segoe UI", "Inter", sans-serif;
     font-size: 14px;
-    color: #ffffff; /* Weißer Text */
+    color: #1a1a1a; /* Dunkler Text */
     border: none;
 }
 
-/* Labels */
-QLabel {
-    color: #ffffff; /* Weißer Text */
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 5px;
+/* Entferne den Fokusrahmen für alle Widgets */
+*:focus {
+    outline: none;
+    border: none;
 }
 
-/* Eingabefelder */
+/* Entferne den Fokusrahmen für spezifische Widgets */
+QPushButton:focus, QLineEdit:focus, QToolButton:focus {
+    outline: none;
+    border: none;
+}
+
+/* Entferne den Fokusrahmen für Buttons */
+QPushButton:focus {
+    outline: none;
+}
+
+/* Entferne den Fokusrahmen für Eingabefelder */
+QLineEdit:focus {
+    outline: none;
+}
+
+/* Entferne den Fokusrahmen für ToolButtons */
+QToolButton:focus {
+    outline: none;
+}
+
+/* === QLabel === */
+QLabel {
+    color: #1a1a1a; /* Dunkler Text */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* === QLineEdit (Textfelder) === */
 QLineEdit {
-    border: 1px solid #3a3a3a; /* Dezente Umrandung */
+    background-color: #f0f4ff; /* Hellblauer Hintergrund */
+    border: 1px solid #3b82f6; /* Blaue Umrandung */
     border-radius: 6px;
     padding: 8px;
-    background-color: #1e1e1e; /* Dunkler Hintergrund */
-    color: #ffffff; /* Weißer Text */
+    color: #1a1a1a; /* Dunkler Text */
+    font-size: 14px;
 }
 
 QLineEdit:focus {
-    border: 1px solid #0078d7; /* Blau bei Fokus */
+    border: 1px solid #2563eb; /* Dunkleres Blau bei Fokus */
+    background-color: #e6f0ff; /* Noch hellerer Hintergrund bei Fokus */
 }
 
-/* Buttons */
+/* === QPushButton === */
 QPushButton {
-    background-color: #0078d7; /* Blau */
+    background-color: #3b82f6; /* Blau */
     color: #ffffff; /* Weißer Text */
     border: none;
     border-radius: 6px;
-    padding: 10px 20px;
-    font-weight: bold;
+    padding: 10px 16px;
+    font-weight: 600;
     font-size: 14px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 QPushButton:hover {
-    background-color: #005a9e; /* Dunkleres Blau bei Hover */
-    transform: scale(1.05); /* Leichtes Vergrößern bei Hover */
+    background-color: #2563eb; /* Dunkleres Blau bei Hover */
+    transform: translateY(-1px); /* Leichtes Anheben */
 }
 
 QPushButton:pressed {
-    background-color: #003f73; /* Noch dunkleres Blau bei Klick */
-    transform: scale(0.95); /* Leichtes Verkleinern bei Klick */
+    background-color: #1d4ed8; /* Noch dunkleres Blau bei Klick */
+    transform: translateY(1px); /* Leichtes Absenken */
+    cursor: pointer; /* Zeiger-Cursor bei Hover */
 }
 
-/* Tabelle */
-QTableWidget {
-    border: 1px solid #3a3a3a; /* Dezente Umrandung */
-    background-color: #1e1e1e; /* Dunkler Hintergrund */
-    color: #ffffff; /* Weißer Text */
+/* === QToolButton === */
+QToolButton {
+    background-color: transparent; /* Kein Hintergrund, damit das Icon sichtbar ist */
+    border: none; /* Keine Umrandung */
+    padding: 0px; /* Kein zusätzliches Padding, damit das Icon nicht verschoben wird */
+    margin: 0px; /* Kein zusätzlicher Abstand */
 }
+
+
+
+QToolButton:pressed {
+    padding: 6px;
+    margin: -1px;
+    cursor: pointer; /* Zeiger-Cursor bei Hover */
+}
+
+
+
+/* === QComboBox === */
+QComboBox {
+    background-color: #f0f4ff; /* Hellblauer Hintergrund */
+    border: 1px solid #3b82f6; /* Blaue Umrandung */
+    border-radius: 6px;
+    padding: 8px;
+    color: #1a1a1a; /* Dunkler Text */
+}
+
+QComboBox:hover {
+    border: 1px solid #2563eb; /* Dunkleres Blau bei Hover */
+}
+
+QComboBox::drop-down {
+    border: none;
+    background: transparent;
+    padding-right: 10px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #ffffff; /* Weißer Hintergrund */
+    border: 1px solid #3b82f6; /* Blaue Umrandung */
+    selection-background-color: #3b82f6; /* Blau bei Auswahl */
+    selection-color: #ffffff; /* Weißer Text bei Auswahl */
+}
+
+/* === QTableWidget === */
+QTableWidget {
+    background-color: #ffffff; /* Weißer Hintergrund */
+    border: 1px solid #e5e7eb; /* Dezente Umrandung */
+    color: #1a1a1a; /* Schwarzer Text */
+    font-size: 14px;
+    gridline-color: #e5e7eb; /* Dezente Gitterlinien */
+    selection-background-color: #3b82f6; /* Blau bei Auswahl */
+    selection-color: #1a1a1a; /* Schwarzer Text bei Auswahl */
+}
+
+QTableWidget::item {
+    padding: 10px;
+    border: none;
+}
+
+
 
 QHeaderView::section {
-    background-color: #0078d7; /* Blau */
-    color: #ffffff; /* Weißer Text */
-    padding: 8px;
+    background-color: #3b82f6; /* Blau */
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px;
     border: none;
-    font-weight: bold;
-    font-size: 14px;
+    border-bottom: 1px solid #2563eb;
+    border-right: 1px solid #2563eb;
 }
 
-/* Scrollbars */
+QTableCornerButton::section {
+    background-color: #3b82f6; /* Blau */
+    border: none;
+}
+
+/* === Scrollbars === */
 QScrollBar:vertical, QScrollBar:horizontal {
-    background: #1e1e1e; /* Dunkler Hintergrund */
+    background: #f0f4ff; /* Hellblauer Hintergrund */
     border: none;
     width: 12px;
     height: 12px;
 }
 
 QScrollBar::handle {
-    background: #3a3a3a; /* Dezente Scrollbar */
+    background: #3b82f6; /* Blau */
     border-radius: 6px;
 }
 
 QScrollBar::handle:hover {
-    background: #0078d7; /* Blau bei Hover */
+    background: #2563eb; /* Dunkleres Blau bei Hover */
 }
 
 QScrollBar::add-line, QScrollBar::sub-line {
     background: none;
     border: none;
+}
+
+/* === Tooltips === */
+QToolTip {
+    background-color: #3b82f6; /* Blau */
+    color: #ffffff; /* Weißer Text */
+    border: 1px solid #2563eb;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+/* === QProgressBar === */
+QProgressBar {
+    background-color: #f0f4ff; /* Hellblauer Hintergrund */
+    border: 1px solid #3b82f6; /* Blaue Umrandung */
+    border-radius: 6px;
+    text-align: center;
+    color: #1a1a1a; /* Dunkler Text */
+}
+
+QProgressBar::chunk {
+    background-color: #3b82f6; /* Blau */
+    border-radius: 6px;
 }

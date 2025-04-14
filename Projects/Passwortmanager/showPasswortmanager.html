@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwort Manager</title>
+    <link rel="stylesheet" href="showPasswortmanager.css"> <!-- Adjust path if needed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Meine Projekte</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../../index.html"><i class="fas fa-home"></i> Startseite</a></li>
+                    <li><a href="../../Projects/projectsOverview.html"><i class="fas fa-project-diagram"></i> Projekte</a></li>
+                    <li><a href="../../AboutMe/aboutMe.html"><i class="fas fa-user"></i> Über mich</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Passwort Manager</h1>
+                <p>Speichern und verwalten Sie Ihre Passwörter sicher und einfach.</p>
+            </div>
+        </section>
+
+        <section class="code-snippets">
+            <div class="container">
+                <h2>Code Snippets</h2>
+
+                <h3>1. Datenbankinitialisierung</h3>
+                <pre><code class="language-python">
+import sqlite3
+from cryptography.fernet import Fernet
+
+DB_PATH = 'passwords.db'
+KEY = b'wf-ylwqIcYWFFbL8NdLeGhyaeibHqVBdx6RomAJLe2k='
+cipher = Fernet(KEY)
+
+def init_db():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY,
+            username TEXT NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS passwords (
+            id INTEGER PRIMARY KEY,
+            service TEXT NOT NULL,
+            email TEXT NOT NULL,
+            username TEXT NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+    conn.commit()
+    conn.close()
+                </code></pre>
+
+                <h3>2. Benutzer hinzufügen</h3>
+                <pre><code class="language-python">
+from bcrypt import hashpw, gensalt
+
+def add_user(username, password):
+    hashed_password = hashpw(password.encode('utf-8'), gensalt())
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
+    conn.commit()
+    conn.close()
+                </code></pre>
+
+                <h3>3. Passwörter abrufen</h3>
+                <pre><code class="language-python">
+def get_passwords():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute('SELECT service, email, username, password FROM passwords')
+    passwords = cursor.fetchall()
+    conn.close()
+    return [(service, email, username, cipher.decrypt(password).decode('utf-8')) for service, email, username, password in passwords]
+                </code></pre>
+
+                <h3>4. PyQt6 GUI: Passwortmanager</h3>
+                <pre><code class="language-python">
+from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QTableWidget, QPushButton, QWidget
+
+class managerWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Password Manager")
+        self.setGeometry(1200, 500, 800, 600)
+        self.init_ui()
+
+    def init_ui(self):
+        layout = QVBoxLayout()
+        self.table = QTableWidget()
+        self.table.setColumnCount(6)
+        self.table.setHorizontalHeaderLabels(["", "Service", "Email", "Username", "Password", "Copy"])
+        self.add_button = QPushButton("Add Password")
+        self.delete_button = QPushButton("Delete Password")
+        layout.addWidget(self.table)
+        layout.addWidget(self.add_button)
+        layout.addWidget(self.delete_button)
+        central_widget = QWidget()
+        central_widget.setLayout(layout)
+        self.setCentralWidget(central_widget)
+                </code></pre>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

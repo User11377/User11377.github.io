@@ -4,11 +4,14 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
+
+// Multer-Konfiguration: Dateien im Ordner "uploads" speichern
 const upload = multer({ dest: 'uploads/' });
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Endpunkt zum Hochladen der Datei
 app.post('/upload', upload.single('file'), (req, res) => {
     const filePath = req.file.path;
 
@@ -19,17 +22,20 @@ app.post('/upload', upload.single('file'), (req, res) => {
     res.json({ message: 'Datei erfolgreich hochgeladen!', filePath: publicPath });
 });
 
-// Endpunkt zum Anzeigen der PDF
-app.get('/uploads/:filename', (req, res) => {
-    const filePath = path.join(__dirname, 'uploads', req.params.filename);
+// Endpunkt zum Abrufen aller Dateien im Ordner "uploads"
+app.get('/list-files', (req, res) => {
+    const uploadsDir = path.join(__dirname, 'uploads');
 
-    // Überprüfen, ob die Datei existiert
-    if (fs.existsSync(filePath)) {
-        res.setHeader('Content-Type', 'application/pdf');
-        fs.createReadStream(filePath).pipe(res);
-    } else {
-        res.status(404).send('Datei nicht gefunden');
-    }
+    fs.readdir(uploadsDir, (err, files) => {
+        if (err) {
+            console.error('Fehler beim Lesen des Ordners:', err);
+            return res.status(500).json({ error: 'Fehler beim Abrufen der Dateien' });
+        }
+
+        // Erstelle eine Liste der URLs zu den Dateien
+        const fileUrls = files.map(file => `/uploads/${file}`);
+        res.json(fileUrls);
+    });
 });
 
 app.listen(3000, () => {

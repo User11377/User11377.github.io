@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #e0e0e0; /* Hellgrauer Hintergrund */
+  color: #333;
+}
+
+.app {
+  text-align: left; /* Text linksbündig */
+}
+
+.header {
+  background-color: #bdbdbd; /* Dunkleres Grau für den Header */
+  color: white;
+  padding: 2rem;
+  border-radius: 0 0 8px 8px; /* Abgerundete Ecken nur unten */
+  width: 100%; /* Volle Breite */
+  box-sizing: border-box; /* Padding wird in die Breite einbezogen */
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+}

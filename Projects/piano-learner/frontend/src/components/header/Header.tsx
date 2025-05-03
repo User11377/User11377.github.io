@@ -1,7 +1,7 @@
 import './Header.css';
 import { useState } from 'react';
 import { FiSearch, FiUser } from 'react-icons/fi';
-import LoginModal from './LoginModal';
+import LoginModal from './login/LoginModal';
 
 function Header() {
   const [showLogin, setShowLogin] = useState(false);

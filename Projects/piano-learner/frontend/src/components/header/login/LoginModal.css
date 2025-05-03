@@ -34,9 +34,15 @@
   
   .modal-buttons {
     display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
   }
+  
+  .modal-buttons h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }  
+  
   
   .btn-close {
     background-color: transparent;

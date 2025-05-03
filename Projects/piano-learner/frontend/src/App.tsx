@@ -1,14 +1,12 @@
 import './App.css';
-
+import Header from './components/header/Header'
 //Router Datei, sie routet zu den richtigen dateien
 
 
 function App() {
   return (
     <div className="app">
-      <header className="header">
-        <h1>Welcome to Piano Learner</h1>
-      </header>
+      <Header />
     </div>
   );
 }

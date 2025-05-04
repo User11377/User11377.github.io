@@ -1,7 +1,14 @@
 import './LoginModal.css';
 
 
-function LoginModal({ onClose }: { onClose: () => void }) {
+function LoginModal({ 
+  onClose,
+  onSwitchToRegister,
+  
+}: { 
+  onClose: () => void 
+  onSwitchToRegister: ()=>void;
+})   {
   return (
     <div className="modal-overlay">
       <div className="modal">
@@ -12,7 +19,7 @@ function LoginModal({ onClose }: { onClose: () => void }) {
         <input type="email" placeholder="E-Mail" />
         <input type="password" placeholder="Passwort" />
         <button className="btn">Einloggen</button>
-        <button className='btn'>Registrieren</button>
+        <button className='btn' onClick={onSwitchToRegister}>Registrieren</button>
       </div>
     </div>
   );

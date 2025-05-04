@@ -2,13 +2,14 @@ import './Header.css';
 import { useState } from 'react';
 import { FiSearch, FiUser } from 'react-icons/fi';
 import LoginModal from './login/LoginModal';
+import RegisterModal from './register/RegisterModal';
 
 function Header() {
-  const [showLogin, setShowLogin] = useState(false);
+  const [modalMode, setModalMode] = useState<'login' | 'register' | null>(null);
 
   return (
     <>
-      <header className={`modern-header ${showLogin ? 'blurred' : ''}`}>
+      <header className={`modern-header ${modalMode ? 'blurred' : ''}`}>
         <div className="logo-area">
           <h1 className="logo-text">Piano Learner</h1>
           <p className="tagline">
@@ -21,7 +22,7 @@ function Header() {
             <FiSearch className="search-icon" />
             <input type="text" placeholder="Suche nach Inhalten..." />
           </div>
-          <button className="btn login-btn" onClick={() => setShowLogin(true)}>
+          <button className="btn login-btn" onClick={() => setModalMode('login')}>
             Login
           </button>
           <button className="btn account-btn">
@@ -30,7 +31,19 @@ function Header() {
         </div>
       </header>
 
-      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+      {modalMode === 'login' && (
+        <LoginModal
+          onClose={() => setModalMode(null)}
+          onSwitchToRegister={() => setModalMode('register')}
+        />
+      )}
+
+      {modalMode === 'register' && (
+        <RegisterModal
+          onClose={() => setModalMode(null)}
+          onSwitchToLogin={() => setModalMode('login')}
+        />
+      )}
     </>
   );
 }

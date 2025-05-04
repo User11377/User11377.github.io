@@ -9,7 +9,7 @@ function Footer() {
         <a href="#">Kontakt</a>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} MeineApp</p>
+        <p>&copy; {new Date().getFullYear()} Piano Learner</p>
       </div>
     </footer>
   );

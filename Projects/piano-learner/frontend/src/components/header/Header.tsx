@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { FiSearch, FiUser } from 'react-icons/fi';
 import LoginModal from './login/LoginModal';
 import RegisterModal from './register/RegisterModal';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
   const [modalMode, setModalMode] = useState<'login' | 'register' | null>(null);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -19,15 +21,19 @@ function Header() {
 
         <div className="actions">
           <div className="search-box">
-            <FiSearch className="search-icon" />
+            <div className="search-icon">
+              <FiSearch />
+            </div>
             <input type="text" placeholder="Suche nach Inhalten..." />
           </div>
           <button className="btn login-btn" onClick={() => setModalMode('login')}>
             Login
           </button>
-          <button className="btn account-btn">
+          {/* Profile Button*/}
+          <button className="btn account-btn" onClick={() => navigate('/profile')}>
             <FiUser />
           </button>
+
         </div>
       </header>
 

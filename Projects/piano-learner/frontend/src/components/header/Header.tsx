@@ -12,7 +12,7 @@ function Header() {
   return (
     <>
       <header className={`modern-header ${modalMode ? 'blurred' : ''}`}>
-        <div className="logo-area">
+        <div className="logo-area" onClick={()=> navigate('/')}>
           <h1 className="logo-text">Piano Learner</h1>
           <p className="tagline">
             “Be consistent and you achieve everything” – Johannes Mayer

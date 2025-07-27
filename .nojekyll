@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Johannes Mayer - Full Stack Developer</title>
+    <meta name="description" content="Leidenschaftlicher Programmierer und Schüler an der HTL Perg. Spezialisiert auf moderne Webtechnologien, KI und Softwareentwicklung." />
+  </head>
+  <body>
+    <div id="__next">
+      <div id="root">
+        {/* App will be rendered here */}
+      </div>
+    </div>
+  </body>
+</html>

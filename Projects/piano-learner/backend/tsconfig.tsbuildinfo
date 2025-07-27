@@ -1,1 +1,0 @@
-{"root":["./src/index.ts","./src/controller/authcontroller.ts","./src/middleware/authmiddleware.ts","./src/prisma/client.ts","./src/routes/auth.ts","./src/types/express.d.ts"],"version":"5.8.3"}
